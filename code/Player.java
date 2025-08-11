@@ -1,30 +1,51 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
     private String name;
-    private List<Card> hand;
+    private int score;
+    private List<Card> hand;  // Player's current hand
 
     public Player(String name) {
         this.name = name;
-        hand = new ArrayList<>();
-    }
-
-    public void drawCard(Deck deck) {
-        hand.add(deck.drawCard());
-    }
-
-    public List<Card> getHand() {
-        return hand;
+        this.score = 0;
+        this.hand = new ArrayList<>();
     }
 
     public String getName() {
         return name;
     }
 
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public List<Card> getHand() {
+        return hand;
+    }
+
+    public void drawCard(GroupOfCards deck) {
+        Card drawn = deck.drawCard();
+        hand.add(drawn);
+        System.out.println(name + " drew: " + drawn);
+    }
+
     public void showHand() {
-        System.out.println(name + "'s Hand:");
+        System.out.println(name + "'s hand: ");
         for (Card card : hand) {
-            System.out.println(card);
+            System.out.println("  " + card);
         }
+    }
+
+    // For this simple game, we can pick the first card to "play"
+    public Card playCard() {
+        if (hand.isEmpty()) {
+            return null;
+        }
+        return hand.remove(0);
     }
 }
