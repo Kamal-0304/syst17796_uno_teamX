@@ -1,6 +1,6 @@
 public class Card {
-    private String color;
-    private String value;
+    private String color; // Red, Blue, Green, Yellow, Wild
+    private String value; // 0-9, Skip, Reverse, Draw Two, Wild, Wild Draw Four
 
     public Card(String color, String value) {
         this.color = color;
